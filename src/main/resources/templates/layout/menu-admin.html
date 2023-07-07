@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+
+</head>
+
+<body>
+	<div class="bar" th:fragment="admin-menu">
+		<ul class="nav">
+			<li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+			<li class="nav-item"><a class="nav-link " aria-current="page"
+				href="/admin/view-product">Product</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/admin/view-category">Category</a></li>
+		</ul>
+	</div>
+</body>
+</html>

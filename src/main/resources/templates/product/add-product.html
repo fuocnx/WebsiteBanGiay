@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/layout-admin :: areas(~{::main})}">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Product</title>
+</head>
+<body>
+	<main>
+		<div class="container" style="margin-top: 10px;">
+			<div class="row">
+				<div class="col-4"></div>
+				<div class="col-4">
+					<h1>ADD PRODUCT</h1>
+					<form th:action="@{/admin/add-product}" th:object=${product}
+						class="form col-sm-8" method="post">
+						<div class="form-group">
+							NAME <input class="form-control" name="name" th:value="*{name}">
+							<span th:if="${#fields.hasErrors('name')}"> <small
+								th:errors="*{name}" th:errorclass="text-danger"></small>
+							</span>
+						</div>
+
+						<div class="form-group">
+							IMAGE<input class="form-control" name="image" th:value="*{image}"
+								th:field="*{image}"> <span
+								th:if="${#fields.hasErrors('image')}"> <small
+								th:errors="*{image}" th:errorclass="text-danger"></small>
+							</span>
+						</div>
+						<div class="form-group">
+							PRICE<input class="form-control" type="number" name="price"
+								th:value="*{price}" th:field="*{price}"><span
+								th:if="${#fields.hasErrors('price')}"> <small
+								th:errors="*{price}" th:errorclass="text-danger"></small>
+							</span>
+						</div>
+						<div class="form-group">
+							<label>Choose Category</label> <select class="form-control"
+								th:field="*{category}">
+								<option th:each="cate : ${cate}" th:value="${cate.id}"
+									th:text="${cate.name}"></option>
+
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="submit" class="btn btn-danger" value="Add">
+							<a type="submit" class="btn btn-danger"
+								th:href="@{/admin/view-product}">Back</a>
+						</div>
+					</form>
+				</div>
+				<div class="col-4"></div>
+			</div>
+
+		</div>
+	</main>
+</body>
+</html>

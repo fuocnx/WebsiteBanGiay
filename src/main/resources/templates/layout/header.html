@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:fragment="main_menu">
+		<div class="header_top">
+			<div class="container">
+				<div class="row">
+					<div class="col-3">
+						<nav class="navbar">
+							<div class="container-fluid">
+								<a class="navbar-brand" href="/home"> FFuoc </a>
+							</div>
+						</nav>
+					</div>
+					<div class="col-4"></div>
+					<div class="col-5">
+						<nav class="navbar">
+							<ul class="nav">
+								<p th:if="${session.currentUser}">
+								<li class="nav-item "><a class="nav-link nav-link-1 active"
+									aria-current="page" href="index.html">Welcome <span>
+											Name: <strong th:text="${session.currentUser.username}"></strong>
+									</span>
+
+								</a></li>
+								<li class="nav-item"><a class="nav-link nav-link-1"
+									href="/cart">Giỏ hàng <span
+										class="position-absolute badge rounded-pill bg-danger"
+										th:text=${sl}> </span></a></li>
+
+								<!-- <li class="nav-item"><a class="nav-link nav-link-1"
+									href="/list-hang-dat">Đã đặt</a></li> -->
+								<li class="nav-item"><a class="nav-link nav-link-4"
+									href="/logout">Log out</a></li>
+								</p>
+								<p th:unless="${session.currentUser}">
+								<li class="nav-item"><a class="nav-link nav-link-4"
+									href="/login">Login</a></li>
+								<li class="nav-item"><a class="nav-link nav-link-4"
+									href="/register">Register</a></li>
+								<li class="nav-item"><a class="nav-link nav-link-4"
+									href="forgot">Forgot PassWord</a></li>
+								</p>
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="header_menu">
+			<div class="container">
+				<div class="row">
+					<div class="col-3"></div>
+					<div class="col-6">
+						<ul class="nav">
+							<li class="nav-item"><a class="nav-link active"
+								aria-current="page" href="/home">Trang chủ</a></li>
+							<li class="nav-item"><a class="nav-link" href="/sanpham">Sản
+									phẩm</a></li>
+							<li class="nav-item"><a class="nav-link" href="/about">Giới
+									thiệu cửa hàng</a></li>
+
+						</ul>
+					</div>
+					<div class="col-3"></div>
+				</div>
+
+			</div>
+		</div>
+	</header>
+</body>
+</html>
